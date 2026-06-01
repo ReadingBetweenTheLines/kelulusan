@@ -1,0 +1,204 @@
+    <!doctype html>
+    <html
+    lang="id"
+    class="h-full bg-gradient-to-tr from-zinc-950 via-green-950 to-emerald-900 bg-no-repeat bg-fixed"
+    >
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Sistem Pengumuman Kelulusan - SMP PAB 5 Patumbak</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <style>
+        @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+        body {
+            font-family: "Inter", sans-serif;
+        }
+        </style>
+    </head>
+    <body class="h-full flex flex-col justify-between text-zinc-900 antialiased">
+        <header class="bg-white border-b-4 border-amber-500 py-5 px-4 sm:px-6 shadow-md">
+            <div class="max-w-3xl mx-auto flex items-center space-x-4">
+                
+                <div class="w-14 h-14 flex items-center justify-center bg-white rounded overflow-hidden flex-shrink-0">
+                    <img src="assets/img/favicon-smkpab10patumbak (1).png" alt="Logo SMP PAB 5 Patumbak" class="w-full h-full object-contain">
+                </div>
+                
+                <div>
+                    <h1 class="text-base sm:text-xl font-black tracking-tight text-zinc-900 uppercase leading-none">SMP PAB 5 PATUMBAK</h1>
+                    <p class="text-xs text-zinc-500 font-semibold tracking-wide mt-1">Laman Resmi Hasil Kelulusan Siswa Kelas IX TA. 2025/2026</p>
+                </div>
+            </div>
+        </header>
+
+        <main class="flex-grow flex items-center justify-center p-4 my-6">
+        <div
+            id="portal-gate"
+            class="w-full max-w-md bg-white border border-zinc-300 rounded-lg shadow-xl overflow-hidden transform transition-all"
+        >
+            <div class="p-6 sm:p-8">
+            <div class="mb-6 border-b border-zinc-100 pb-4">
+                <h2
+                class="text-xl font-extrabold text-zinc-900 tracking-tight uppercase"
+                >
+                Autentikasi Siswa
+                </h2>
+                <p class="text-xs text-zinc-500 mt-1">
+                Silakan masukkan data ujian resmi Anda untuk memuat lembar
+                pengumuman.
+                </p>
+            </div>
+
+            <form
+                id="lookup-form"
+                class="space-y-4"
+                onsubmit="handleFormSubmit(event)"
+            >
+                <div>
+                <label
+                    class="block text-xs font-bold text-zinc-700 uppercase tracking-widest mb-1.5"
+                    >NISN Siswa</label
+                >
+                <input
+                    type="text"
+                    id="input-no"
+                    required
+                    placeholder="Masukkan 10 Digit NISN"
+                    class="w-full px-4 py-2.5 bg-zinc-50 border-2 border-zinc-300 rounded text-sm focus:outline-none focus:border-green-700 focus:bg-white font-mono tracking-widest text-center font-bold text-zinc-800 transition-all shadow-inner"
+                />
+                </div>
+
+                <div>
+                <label
+                    class="block text-xs font-bold text-zinc-700 uppercase tracking-widest mb-1.5"
+                    >Tanggal Lahir</label
+                >
+                <input
+                    type="date"
+                    id="input-dob"
+                    required
+                    class="w-full px-4 py-2.5 bg-zinc-50 border-2 border-zinc-300 rounded text-sm focus:outline-none focus:border-green-700 focus:bg-white font-mono text-center font-bold text-zinc-800 transition-all shadow-inner"
+                />
+                </div>
+
+                <!-- Inside <form id="lookup-form"> -->
+                <div>
+                <label
+                    class="block text-xs font-bold text-zinc-700 uppercase tracking-widest mb-1.5"
+                    >Kode Unik Verifikasi</label
+                >
+                <input
+                    type="text"
+                    id="input-token"
+                    required
+                    placeholder="Contoh: PAB5-XXXXX"
+                    class="w-full px-4 py-2.5 bg-zinc-50 border-2 border-zinc-300 rounded text-sm focus:outline-none focus:border-green-700 focus:bg-white font-mono tracking-widest text-center font-bold text-zinc-800 transition-all shadow-inner uppercase"
+                />
+                </div>
+
+                <div
+                id="error-banner"
+                class="hidden p-3.5 bg-red-50 border-l-4 border-red-600 text-xs text-red-900 font-bold rounded-r font-mono"
+                ></div>
+
+                <button
+                type="submit"
+                id="submit-btn"
+                class="w-full mt-4 py-3 px-4 bg-gradient-to-b from-green-700 to-green-800 hover:from-green-800 hover:to-green-900 text-white font-bold rounded text-xs uppercase tracking-widest transition-all shadow border border-green-600 active:translate-y-0.5"
+                >
+                <span id="btn-text">Periksa Kelulusan</span>
+                </button>
+            </form>
+            </div>
+            <div
+            class="bg-zinc-100 px-6 py-4 border-t border-zinc-200 text-center text-[11px] text-zinc-500 font-bold font-mono tracking-wide"
+            >
+            PANITIA KELULUSAN &bull; ONLINE PORTAL SECURE
+            </div>
+        </div>
+
+        <div
+            id="announcement-board"
+            class="hidden w-full max-w-2xl bg-white border border-zinc-300 rounded-lg shadow-2xl overflow-hidden transform transition-all"
+        >
+            <div
+            class="bg-zinc-900 px-6 py-4 flex items-center justify-between border-b border-zinc-800"
+            >
+            <h3
+                class="text-xs font-bold text-zinc-300 uppercase tracking-widest font-mono"
+            >
+                Hasil Verifikasi Kelulusan Ujian
+            </h3>
+            <div
+                class="text-[10px] text-amber-400 font-bold font-mono border border-amber-400/30 bg-amber-400/10 px-2.5 py-0.5 rounded uppercase tracking-wider"
+            >
+            </div>
+            </div>
+
+            <div class="p-6 sm:p-8 space-y-6">
+            <div>
+                <h4
+                class="text-xs uppercase font-extrabold tracking-widest text-zinc-400 mb-2 font-mono"
+                >
+                Identitas Peserta
+                </h4>
+                <div
+                class="border-2 border-zinc-200 rounded-lg overflow-hidden text-sm shadow-sm"
+                >
+                <div
+                    class="grid grid-cols-3 border-b border-zinc-200 bg-zinc-50 p-3.5"
+                >
+                    <span
+                    class="text-zinc-500 font-bold uppercase tracking-wider text-xs"
+                    >NISN Siswa</span
+                    >
+                    <span
+                    class="col-span-2 font-mono font-black text-zinc-900 tracking-wider"
+                    id="res-no"
+                    >-</span
+                    >
+                </div>
+                <div class="grid grid-cols-3 p-3.5 bg-white">
+                    <span
+                    class="text-zinc-500 font-bold uppercase tracking-wider text-xs"
+                    >Nama Lengkap</span
+                    >
+                    <span
+                    class="col-span-2 font-extrabold text-zinc-900 uppercase tracking-wide"
+                    id="res-name"
+                    >-</span
+                    >
+                </div>
+                </div>
+            </div>
+
+            <div id="status-card-injector"></div>
+
+            <div
+                class="pt-5 border-t border-zinc-200 flex flex-col sm:flex-row items-center justify-between gap-4"
+            >
+                <p
+                class="text-[11px] text-zinc-500 leading-relaxed max-w-sm text-center sm:text-left font-medium"
+                >
+                *Halaman ini diterbitkan langsung oleh panitia ujian kelulusan
+                sekolah sebagai media informasi digital resmi.
+                </p>
+                <button
+                onclick="backToSearch()"
+                class="w-full sm:w-auto px-6 py-2.5 bg-zinc-900 hover:bg-black text-white text-xs font-bold uppercase tracking-widest rounded shadow active:translate-y-0.5 transition-all font-mono"
+                >
+                Selesai
+                </button>
+            </div>
+            </div>
+        </div>
+        </main>
+
+        <footer
+        class="bg-white text-zinc-500 text-[11px] font-semibold tracking-wide text-center py-4 border-t border-zinc-200 shadow-inner"
+        >
+        &copy; 2026 Panitia Pelaksana Kelulusan SMP PAB 5 Patumbak.
+        </footer>
+
+        <script src="app.js"></script>
+    </body>
+    </html>
