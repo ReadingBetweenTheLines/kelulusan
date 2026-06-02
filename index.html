@@ -79,7 +79,7 @@
               <!-- Tight Text Stack Architecture -->
               <div class="text-center sm:text-left flex flex-col justify-center h-full py-1">
                 <span class="text-xs font-mono tracking-[0.25em] text-inst-accent font-bold uppercase block mb-1">
-                  YAYASAN PENDIDIKAN AMAL BAKTI (PAB)
+                  YAYASAN PENDIDIKAN PERKUMPULAN AMAL BAKTI (PAB)
                 </span>
                 <h1 class="academic-font text-3xl sm:text-4xl md:text-5xl font-black tracking-tight uppercase leading-[0.95] text-white">
                   LAMAN INFORMASI KELULUSAN SISWA
@@ -307,42 +307,5 @@
 
     <script src="app.js"></script>
 
-    <script>
-      function handleFormSubmit(e) {
-        e.preventDefault();
-        
-        // Hide access portal gate views
-        document.getElementById("portal-gate").classList.add("hidden");
-        
-        // Reveal official UTBK layout result view
-        document.getElementById("announcement-board").classList.remove("hidden");
-
-        // Populate dynamic registry points
-        document.getElementById("res-name").innerText = "AHMAD DANI SYAHPUTRA";
-        document.getElementById("res-no").innerText =
-          document.getElementById("input-no").value || "0098765432";
-
-        // Inject cleanly balanced, sharp stamp unit inside the letter body (without labels or huge dimensions)
-        document.getElementById("status-card-injector").innerHTML = `
-          <div class="flex justify-start my-2">
-            <div class="inline-flex px-12 py-4 bg-inst-main border-2 border-inst-deep text-white shadow-[4px_4px_0px_#032319] relative overflow-hidden">
-              <div class="absolute top-0 left-0 w-1.5 h-1.5 bg-white"></div>
-              <div class="absolute top-0 right-0 w-1.5 h-1.5 bg-white"></div>
-              <div class="absolute bottom-0 left-0 w-1.5 h-1.5 bg-white"></div>
-              <div class="absolute bottom-0 right-0 w-1.5 h-1.5 bg-white"></div>
-              
-              <span class="academic-font text-4xl font-black uppercase tracking-[0.2em] pl-[0.2em]">
-                LULUS
-              </span>
-            </div>
-          </div>
-        `;
-      }
-
-      function backToSearch() {
-        document.getElementById("announcement-board").classList.add("hidden");
-        document.getElementById("portal-gate").classList.remove("hidden");
-      }
-    </script>
   </body>
 </html>
